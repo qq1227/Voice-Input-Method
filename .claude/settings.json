@@ -1,5 +1,9 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npx vite *)"
+    ],
     "additionalDirectories": [
       "c:\\Users\\zhang\\.claude\\plans"
     ]

@@ -30,7 +30,7 @@ export class VoskService {
   private hotwordWords: string[] = [];
 
   constructor(options: VoskEngineOptions = {}) {
-    const basePath = path.join(__dirname, '..', '..', 'models');
+    const basePath = path.join(__dirname, '..', '..', '..', 'models');
     this.modelPath = options.modelPath || process.env.VOSK_MODEL_PATH || basePath;
     this.sampleRate = options.sampleRate || 16000;
   }
@@ -75,8 +75,8 @@ export class VoskService {
   private resolveModelPath(): string | null {
     const searchPaths = [
       this.modelPath,
-      path.join(__dirname, '..', '..', 'models', 'vosk-model-small-cn-0.22'),
-      path.join(__dirname, '..', '..', 'models', 'vosk-model-cn-0.22'),
+      path.join(__dirname, '..', '..', '..', 'models', 'vosk-model-small-cn-0.22'),
+      path.join(__dirname, '..', '..', '..', 'models', 'vosk-model-cn-0.22'),
       path.join(process.resourcesPath || '', 'models', 'vosk-model-small-cn-0.22'),
     ];
 

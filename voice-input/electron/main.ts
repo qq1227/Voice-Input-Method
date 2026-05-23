@@ -46,7 +46,7 @@ function createWindow(): void {
   // 启用语音识别相关特性
   mainWindow.webContents.session.setPermissionRequestHandler(
     (_webContents, permission, callback) => {
-      if (permission === 'media' || permission === 'audioCapture') {
+      if (permission === 'media') {
         callback(true);
       } else {
         callback(false);
@@ -59,7 +59,7 @@ function createWindow(): void {
     mainWindow.loadURL('http://localhost:5173');
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   } else {
-    mainWindow.loadFile(path.join(__dirname, '..', 'dist', 'index.html'));
+    mainWindow.loadFile(path.join(__dirname, '..', '..', 'dist', 'index.html'));
   }
 
   mainWindow.once('ready-to-show', () => {
