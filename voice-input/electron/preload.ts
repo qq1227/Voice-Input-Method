@@ -60,6 +60,10 @@ const api: VoiceInputAPI = {
   clearHistory: () =>
     ipcRenderer.invoke(IPC_CHANNELS.CLEAR_HISTORY),
 
+  // ===== 导出 =====
+  exportText: (text) =>
+    ipcRenderer.invoke(IPC_CHANNELS.EXPORT_TEXT, text),
+
   // ===== 事件监听 =====
   onResult: (callback) => {
     const handler = (_event: Electron.IpcRendererEvent, result: RecognitionResult) => callback(result);

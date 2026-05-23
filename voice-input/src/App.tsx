@@ -3,14 +3,16 @@ import VoiceInputPanel from './components/VoiceInputPanel';
 import StatusBar from './components/StatusBar';
 import Settings from './components/Settings';
 import History from './components/History';
+import { useSettingsStore } from './stores/settings-store';
 
 type Tab = 'input' | 'settings' | 'history';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('input');
+  const theme = useSettingsStore((s) => s.settings.theme);
 
   return (
-    <div className="app">
+    <div className={`app${theme === 'dark' ? ' dark' : ''}`}>
       <header className="app-header">
         <h1 className="app-title">
           <span className="app-icon">🎤</span>

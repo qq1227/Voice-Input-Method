@@ -35,6 +35,25 @@ export default function History() {
     }
   };
 
+  const handleExport = async () => {
+    if (history.length === 0) return;
+    const text = history
+      .map((item) => `[${formatTime(item.timestamp)}] ${item.text}`)
+      .join('\n\n');
+    try {
+      const result = await window.voiceInput?.exportText(text);
+      if (result?.success) {
+        setCopiedId('export');
+        setTimeout(() => setCopiedId(null), 2000);
+      }
+    } catch {
+      // fallback: copy to clipboard
+      await navigator.clipboard.writeText(text);
+      setCopiedId('export');
+      setTimeout(() => setCopiedId(null), 2000);
+    }
+  };
+
   const handleClear = async () => {
     try {
       await window.voiceInput?.clearHistory();
@@ -58,9 +77,14 @@ export default function History() {
       <div className="history-header">
         <h3 className="section-title">历史记录</h3>
         {history.length > 0 && (
-          <button className="btn btn-danger-small" onClick={handleClear}>
-            清空全部
-          </button>
+          <div className="history-actions-bar">
+            <button className="btn btn-small" onClick={handleExport}>
+              {copiedId === 'export' ? '✓ 已导出' : '📥 导出'}
+            </button>
+            <button className="btn btn-danger-small" onClick={handleClear}>
+              清空全部
+            </button>
+          </div>
         )}
       </div>
 

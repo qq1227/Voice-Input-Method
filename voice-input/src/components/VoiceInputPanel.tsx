@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecognition } from '../hooks/use-recognition';
 import { useVad } from '../hooks/use-vad';
+import { useSettingsStore } from '../stores/settings-store';
 
 /**
  * VoiceInputPanel - 语音输入主面板
@@ -10,6 +11,8 @@ import { useVad } from '../hooks/use-vad';
  * - 实时文字显示区域（部分结果 + 最终结果）
  * - 音频可视化波形
  * - 操作按钮（复制、清空）
+ * - 字数/时长统计
+ * - 长文本模式指示
  */
 export default function VoiceInputPanel() {
   const {
@@ -24,10 +27,44 @@ export default function VoiceInputPanel() {
   } = useRecognition();
 
   const { audioLevel, stateLabel, stateColor } = useVad();
+  const longTextMode = useSettingsStore((s) => s.settings.longTextMode);
   const textEndRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const waveAnimRef = useRef<number>(0);
   const wavePhaseRef = useRef(0);
+  const [recordingDuration, setRecordingDuration] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // 字数统计
+  const charCount = currentText.replace(/\s/g, '').length;
+
+  // 录音计时器
+  useEffect(() => {
+    if (isRecording) {
+      setRecordingDuration(0);
+      timerRef.current = setInterval(() => {
+        setRecordingDuration((prev) => prev + 1);
+      }, 1000);
+    } else {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    }
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [isRecording]);
+
+  // 格式化时长 MM:SS
+  const formatDuration = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
 
   // 自动滚动到底部
   useEffect(() => {
@@ -107,6 +144,25 @@ export default function VoiceInputPanel() {
           <div ref={textEndRef} />
         </div>
 
+        {/* 字数 + 时长统计 */}
+        <div className="stats-bar">
+          <span className="stat-item">
+            <span className="stat-icon">📝</span>
+            {charCount} 字
+          </span>
+          {isRecording && (
+            <span className="stat-item recording-stat">
+              <span className="stat-icon">⏱️</span>
+              {formatDuration(recordingDuration)}
+            </span>
+          )}
+          {longTextMode && !isRecording && (
+            <span className="stat-item longtext-badge">
+              📄 长文本
+            </span>
+          )}
+        </div>
+
         {/* 波形 */}
         <canvas
           ref={canvasRef}
@@ -120,6 +176,9 @@ export default function VoiceInputPanel() {
       <div className="controls">
         <div className="vad-indicator" style={{ color: stateColor }}>
           {stateLabel}
+          {isRecording && longTextMode && (
+            <span className="longtext-recording-badge"> 📄 长文本</span>
+          )}
         </div>
 
         <button

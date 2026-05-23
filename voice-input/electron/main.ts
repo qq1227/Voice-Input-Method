@@ -1,5 +1,6 @@
-import { app, BrowserWindow, ipcMain, clipboard } from 'electron';
+import { app, BrowserWindow, ipcMain, clipboard, dialog } from 'electron';
 import * as path from 'path';
+import * as fs from 'fs';
 import { VoskService } from './services/vosk-service';
 import { VadService } from './services/vad-service';
 import { punctuationService } from './services/punctuation';
@@ -324,6 +325,34 @@ function registerIpcHandlers(): void {
 
   ipcMain.handle(IPC_CHANNELS.CLEAR_HISTORY, async () => {
     history.length = 0;
+  });
+
+  // ===== 导出文本 =====
+  ipcMain.handle(IPC_CHANNELS.EXPORT_TEXT, async (_event, text: string) => {
+    if (!text) return { success: false };
+    try {
+      const now = new Date();
+      const defaultName = `语音输入_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}.txt`;
+
+      const result = await dialog.showSaveDialog(mainWindow!, {
+        title: '导出语音输入文本',
+        defaultPath: defaultName,
+        filters: [
+          { name: '文本文件', extensions: ['txt'] },
+          { name: '所有文件', extensions: ['*'] },
+        ],
+      });
+
+      if (result.canceled || !result.filePath) {
+        return { success: false };
+      }
+
+      fs.writeFileSync(result.filePath, text, 'utf-8');
+      return { success: true, path: result.filePath };
+    } catch (err) {
+      console.error('[Main] 导出失败:', err);
+      return { success: false };
+    }
   });
 }
 

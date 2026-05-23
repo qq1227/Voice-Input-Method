@@ -48,6 +48,7 @@ export interface AppSettings {
   cloudAsrProvider: 'baidu' | 'aliyun' | 'none';
   asrEngine: AsrEngineType;
   theme: 'light' | 'dark';
+  longTextMode: boolean;
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
@@ -59,6 +60,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   cloudAsrProvider: 'none',
   asrEngine: 'auto',
   theme: 'light',
+  longTextMode: false,
 };
 
 export const DEFAULT_VAD_CONFIG: VadConfig = {
@@ -91,6 +93,7 @@ export const IPC_CHANNELS = {
   CLEAR_TEXT: 'clear-text',
   GET_HISTORY: 'get-history',
   CLEAR_HISTORY: 'clear-history',
+  EXPORT_TEXT: 'export-text',
 } as const;
 
 // ===== Electron API 暴露给渲染进程 =====
@@ -109,6 +112,7 @@ export interface VoiceInputAPI {
   clearText(): Promise<void>;
   getHistory(): Promise<RecognitionResult[]>;
   clearHistory(): Promise<void>;
+  exportText(text: string): Promise<{ success: boolean; path?: string }>;
   sendAudioChunk(buffer: ArrayBuffer): void;
 
   onResult(callback: (result: RecognitionResult) => void): () => void;

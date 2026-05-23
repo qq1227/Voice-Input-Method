@@ -106,6 +106,33 @@ export default function Settings() {
             <span className="checkbox-label">自动添加标点</span>
           </label>
         </div>
+
+        <div className="setting-item">
+          <label className="setting-label">
+            <input
+              type="checkbox"
+              checked={settings.longTextMode}
+              onChange={(e) => handleChange('longTextMode', e.target.checked)}
+            />
+            <span className="checkbox-label">长文本模式（不自动停止）</span>
+          </label>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <h3 className="section-title">外观</h3>
+
+        <div className="setting-item">
+          <label className="setting-label">主题</label>
+          <select
+            className="setting-select"
+            value={settings.theme}
+            onChange={(e) => handleChange('theme', e.target.value as 'light' | 'dark')}
+          >
+            <option value="light">☀️ 亮色</option>
+            <option value="dark">🌙 深色</option>
+          </select>
+        </div>
       </div>
 
       <div className="settings-section">
