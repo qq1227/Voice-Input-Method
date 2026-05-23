@@ -52,10 +52,12 @@ export class VoskService {
   private async loadModel(): Promise<void> {
     if (!this.vosk) return;
 
-    let modelPath = this.resolveModelPath();
+    const modelPath = this.resolveModelPath();
     if (!modelPath) {
-      console.warn('[Vosk] 未找到模型文件，尝试默认路径');
-      modelPath = this.modelPath;
+      console.warn('[Vosk] 未找到兼容的模型文件（am 须为文件），降级到 Web Speech API');
+      this.available = false;
+      this.emit('ready', { available: false, engine: 'webspeech' });
+      return;
     }
 
     try {
@@ -75,15 +77,19 @@ export class VoskService {
   private resolveModelPath(): string | null {
     const searchPaths = [
       this.modelPath,
+      // 标准解压路径
       path.join(__dirname, '..', '..', 'models', 'vosk-model-small-cn-0.22'),
       path.join(__dirname, '..', '..', 'models', 'vosk-model-cn-0.22'),
+      // 嵌套解压路径（zip 解压多了一层目录）
+      path.join(__dirname, '..', '..', 'models', 'vosk-model-small-cn-0.22', 'vosk-model-small-cn-0.22'),
       path.join(process.resourcesPath || '', 'models', 'vosk-model-small-cn-0.22'),
     ];
 
     for (const p of searchPaths) {
       if (fs.existsSync(p) && fs.statSync(p).isDirectory()) {
         const amFile = path.join(p, 'am');
-        if (fs.existsSync(amFile) || fs.existsSync(path.join(p, 'conf', 'model.conf'))) {
+        // Vosk 0.3.x 要求 am 为单个文件；新模型 am 为目录会产生 segfault
+        if (fs.existsSync(amFile) && fs.statSync(amFile).isFile()) {
           return p;
         }
       }
@@ -192,9 +198,13 @@ export class VoskService {
     return this.available && this.isLoaded;
   }
 
+  /**
+   * 获取引擎状态。
+   * 当 Vosk 不可用时返回 type: 'webspeech'，让渲染层自动切换到浏览器 Web Speech API。
+   */
   getStatus(): { type: string; available: boolean; modelLoaded: boolean } {
     return {
-      type: 'vosk',
+      type: this.available ? 'vosk' : 'webspeech',
       available: this.available,
       modelLoaded: this.isLoaded,
     };

@@ -1,5 +1,14 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npx vite *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"try { const v = require\\('vosk'\\); console.log\\('Vosk loaded:', Object.keys\\(v\\).join\\(', '\\)\\); } catch\\(e\\) { console.log\\('Error:', e.message\\); }\")",
+      "Bash(dir \"c:\\\\Users\\\\zhang\\\\Desktop\\\\七牛云\\\\voice-input\\\\node_modules\\\\vosk*\")",
+      "Bash(node -e \"const fs = require\\('fs'\\); const p = 'c:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\zhang\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\七牛云\\\\\\\\\\\\\\\\voice-input\\\\\\\\\\\\\\\\node_modules'; const items = fs.readdirSync\\(p\\).filter\\(x => x.startsWith\\('vosk'\\)\\); console.log\\('Found:', items.length > 0 ? items : 'NONE'\\); items.forEach\\(x => { const s = fs.statSync\\(p+'\\\\\\\\\\\\\\\\'+x\\); console.log\\(x, s.isDirectory\\(\\) ? '[dir]' : '[file]', s.size\\); }\\)\")",
+      "Bash(node -e \"const fs = require\\('fs'\\); const list = fs.readdirSync\\('C:/Users/zhang/Desktop/七牛云/voice-input/node_modules'\\).filter\\(x=>x!='.package-lock.json'&&x!='.cache'\\).sort\\(\\); console.log\\(JSON.stringify\\(list,null,2\\)\\)\")"
+    ],
     "additionalDirectories": [
       "c:\\Users\\zhang\\.claude\\plans"
     ]

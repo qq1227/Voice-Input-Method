@@ -1,4 +1,4 @@
-import { VadState, VadConfig, DEFAULT_VAD_CONFIG } from '../../src/types';
+import { VadState, VadConfig, DEFAULT_VAD_CONFIG } from '../types';
 
 export type VadEvent = 'stateChange' | 'audioLevel' | 'speechStart' | 'speechEnd';
 

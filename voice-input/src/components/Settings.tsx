@@ -76,7 +76,7 @@ export default function Settings() {
           <select
             className="setting-select"
             value={settings.language}
-            onChange={(e) => handleChange('language', e.target.value)}
+            onChange={(e) => handleChange('language', e.target.value as 'zh' | 'en' | 'yue' | 'mixed')}
           >
             <option value="zh">中文普通话</option>
             <option value="en">English</option>

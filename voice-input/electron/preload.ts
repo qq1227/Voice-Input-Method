@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { IPC_CHANNELS, VoiceInputAPI, RecognitionResult, VadState, Hotword, AppSettings } from '../src/types';
+import { IPC_CHANNELS, VoiceInputAPI, RecognitionResult, VadState, Hotword, AppSettings } from './types';
 
 /**
  * Preload 脚本
