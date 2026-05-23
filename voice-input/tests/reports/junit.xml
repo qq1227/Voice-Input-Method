@@ -73,7 +73,7 @@
     </testcase>
     <testcase classname="正向流程 - 标点添加" name="疑问句添加问号 (谁)" time="0">
     </testcase>
-    <testcase classname="正向流程 - 标点添加" name="感叹语气添加感叹号 (太)" time="0">
+    <testcase classname="正向流程 - 标点添加" name="感叹语气添加感叹号 (太)" time="0.001">
     </testcase>
     <testcase classname="正向流程 - 标点添加" name="感叹语气添加感叹号 (真)" time="0.001">
     </testcase>
@@ -85,7 +85,7 @@
     </testcase>
     <testcase classname="正向流程 - 标点添加" name="已以感叹号结尾时不重复添加" time="0">
     </testcase>
-    <testcase classname="正向流程 - 标点添加" name="已以省略号结尾时不重复添加" time="0">
+    <testcase classname="正向流程 - 标点添加" name="已以省略号结尾时不重复添加" time="0.001">
     </testcase>
     <testcase classname="正向流程 - 语音命令" name="&quot;逗号&quot; → ，" time="0">
     </testcase>
@@ -103,7 +103,7 @@
     </testcase>
     <testcase classname="正向流程 - 语音命令" name="多重语音命令组合" time="0">
     </testcase>
-    <testcase classname="边界/异常输入" name="空字符串返回空" time="0">
+    <testcase classname="边界/异常输入" name="空字符串返回空" time="0.001">
     </testcase>
     <testcase classname="边界/异常输入" name="仅空白字符返回空白字符" time="0">
     </testcase>
@@ -113,7 +113,7 @@
     </testcase>
     <testcase classname="边界/异常输入" name="超长文本不崩溃" time="0">
     </testcase>
-    <testcase classname="边界/异常输入" name="null 类似输入不崩溃" time="0">
+    <testcase classname="边界/异常输入" name="null 类似输入不崩溃" time="0.001">
     </testcase>
     <testcase classname="边界/异常输入" name="undefined 类似输入不崩溃" time="0">
     </testcase>
@@ -125,7 +125,7 @@
     </testcase>
     <testcase classname="punctuateParagraph 段落方法" name="段落多句处理" time="0">
     </testcase>
-    <testcase classname="punctuateParagraph 段落方法" name="段落以起始词分割" time="0">
+    <testcase classname="punctuateParagraph 段落方法" name="段落以起始词分割" time="0.001">
     </testcase>
     <testcase classname="punctuateParagraph 段落方法" name="段落空字符串" time="0">
     </testcase>
@@ -173,7 +173,7 @@
   <testsuite name="正向流程 - 增删改查" errors="0" failures="0" skipped="0" timestamp="2026-05-23T01:09:18" time="1.358" tests="23">
     <testcase classname="正向流程 - 增删改查" name="添加热词返回带 ID 的对象" time="0.027">
     </testcase>
-    <testcase classname="正向流程 - 增删改查" name="通过 ID 获取热词" time="0.003">
+    <testcase classname="正向流程 - 增删改查" name="通过 ID 获取热词" time="0.014">
     </testcase>
     <testcase classname="正向流程 - 增删改查" name="通过词汇查找热词" time="0.012">
     </testcase>

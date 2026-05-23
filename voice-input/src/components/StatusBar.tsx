@@ -47,9 +47,9 @@ export default function StatusBar() {
 
       <div className="status-right">
         {/* 引擎信息 */}
-        <span className="engine-badge" title={engineAvailable ? '引擎在线' : '引擎不可用'}>
-          <span className={`engine-dot ${engineAvailable ? 'online' : 'offline'}`} />
-          {engineType === 'vosk' ? 'Vosk' : engineType === 'webspeech' ? 'Web Speech' : engineType}
+        <span className="engine-badge" title={engineType === 'vosk' ? 'Vosk 离线引擎' : engineType === 'webspeech' ? '浏览器语音识别' : '不可用'}>
+          <span className={`engine-dot ${engineType === 'vosk' ? 'online' : 'offline'}`} />
+          {engineType === 'vosk' ? 'Vosk' : engineType === 'webspeech' ? 'Web Speech' : engineType === 'unavailable' ? '不可用' : engineType}
         </span>
 
         {/* 错误提示 */}

@@ -1,4 +1,7 @@
 import { app, BrowserWindow, ipcMain, clipboard, dialog } from 'electron';
+
+// 启用 Web Speech API 支持（某些 Electron 构建需要）
+app.commandLine.appendSwitch('enable-features', 'WebSpeech');
 import * as path from 'path';
 import * as fs from 'fs';
 import { VoskService } from './services/vosk-service';
@@ -13,7 +16,7 @@ import {
   Hotword,
   AppSettings,
   DEFAULT_SETTINGS,
-} from '../src/types';
+} from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 // ===== 全局状态 =====

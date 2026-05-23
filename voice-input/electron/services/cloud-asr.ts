@@ -1,4 +1,4 @@
-import { RecognitionResult } from '../../src/types';
+import { RecognitionResult } from '../types';
 
 export type CloudAsrEvent = 'result' | 'error' | 'status';
 

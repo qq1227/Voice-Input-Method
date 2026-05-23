@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm search *)",
+      "Bash(npm cache *)",
+      "Bash(mkdir -p /tmp/test-vosk)",
+      "Read(//tmp/**)",
+      "Bash(npm init *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p='C:/Users/zhang/Desktop/七牛云/voice-input/models/vosk-model-small-cn-0.22';const items=fs.readdirSync\\(p\\);console.log\\('Files:',items.slice\\(0,15\\)\\);console.log\\('Has am:',fs.existsSync\\(p+'/am'\\)\\);console.log\\('Has conf/model.conf:',fs.existsSync\\(p+'/conf/model.conf'\\)\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p='C:/Users/zhang/Desktop/七牛云/voice-input/models/vosk-model-small-cn-0.22/vosk-model-small-cn-0.22';const items=fs.readdirSync\\(p\\);console.log\\('Nested:',items.slice\\(0,10\\)\\);console.log\\('Has am:',fs.existsSync\\(p+'/am'\\)\\);console.log\\('Has conf/model.conf:',fs.existsSync\\(p+'/conf/model.conf'\\)\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p='C:/Users/zhang/Desktop/七牛云/voice-input/models/vosk-model-small-cn-0.22/vosk-model-small-cn-0.22';fs.readdirSync\\(p\\).forEach\\(f=>{try{const s=fs.statSync\\(p+'/'+f\\);console.log\\(f, s.isDirectory\\(\\)?'[dir]':'[file]',s.size\\)}catch\\(e\\){}}\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p='C:/Users/zhang/Desktop/七牛云/voice-input/models/vosk-model-small-cn-0.22/vosk-model-small-cn-0.22/am';const items=fs.readdirSync\\(p\\);items.forEach\\(f=>{const s=fs.statSync\\(p+'/'+f\\);console.log\\(f, s.size\\)}\\)\")",
+      "Bash(node -e \"try{require\\('vosk'\\);console.log\\('vosk IS available'\\)}catch\\(e\\){console.log\\('vosk NOT available:',e.message\\)}\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p='C:/Users/zhang/Desktop/七牛云/voice-input/electron/services/vosk-service.ts';const c=fs.readFileSync\\(p,'utf-8'\\);console.log\\('Has isFile check:',c.includes\\('isFile\\(\\)'\\)\\);console.log\\('Has fallback removed:',!c.includes\\('modelPath = this.modelPath'\\)\\)\")"
+    ]
+  }
+}

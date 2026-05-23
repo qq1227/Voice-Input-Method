@@ -62,7 +62,7 @@ echo ""
 
 # 运行测试并同时输出到终端和文件
 set +e
-npx jest --config "$PROJECT_DIR/tests/jest.config.ts" \
+npx jest --config "$PROJECT_DIR/tests/jest.config.js" \
          --verbose \
          --no-cache \
          2>&1 | tee "$REPORT_FILE"

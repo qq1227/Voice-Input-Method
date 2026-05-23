@@ -5,20 +5,31 @@ import { RecognitionResult } from '../types';
 /**
  * History - 识别历史记录
  *
- * 显示过去的识别结果，支持复制和清除。
+ * 显示过去的识别结果，支持复制、导出和清除。
+ * 数据来源：
+ * - Vosk 路径：从主进程 IPC 获取（保存在 main.ts 的 history 数组）
+ * - Web Speech 路径：从 Zustand store 的 history 获取（由 stopWebSpeech 写入）
  */
 export default function History() {
-  const [history, setHistory] = useState<RecognitionResult[]>([]);
+  const storeHistory = useRecognitionStore((s) => s.history);
+  const [history, setHistory] = useState<RecognitionResult[]>(storeHistory);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   useEffect(() => {
     loadHistory();
   }, []);
 
+  // storeHistory 变化时同步（Web Speech 识别的结果由 stopWebSpeech 写入 store）
+  useEffect(() => {
+    if (storeHistory.length > 0) {
+      setHistory(storeHistory);
+    }
+  }, [storeHistory]);
+
   const loadHistory = async () => {
     try {
       const h = await window.voiceInput?.getHistory();
-      if (h) setHistory(h);
+      if (h && h.length > 0) setHistory(h);
     } catch {
       // fallback to store
       setHistory(useRecognitionStore.getState().history);
@@ -40,18 +51,31 @@ export default function History() {
     const text = history
       .map((item) => `[${formatTime(item.timestamp)}] ${item.text}`)
       .join('\n\n');
+    const now = new Date();
+    const filename = `语音输入_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}.txt`;
+
     try {
+      // Electron 路径：通过 IPC 弹出系统保存对话框
       const result = await window.voiceInput?.exportText(text);
       if (result?.success) {
         setCopiedId('export');
         setTimeout(() => setCopiedId(null), 2000);
+        return;
       }
     } catch {
-      // fallback: copy to clipboard
-      await navigator.clipboard.writeText(text);
-      setCopiedId('export');
-      setTimeout(() => setCopiedId(null), 2000);
+      // 忽略 IPC 错误，走浏览器 fallback
     }
+
+    // 浏览器 fallback：创建 Blob 下载
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+    setCopiedId('export');
+    setTimeout(() => setCopiedId(null), 2000);
   };
 
   const handleClear = async () => {
@@ -61,6 +85,7 @@ export default function History() {
       // ignore
     }
     setHistory([]);
+    useRecognitionStore.getState().clearAll();
   };
 
   const formatTime = (ts: number) => {
