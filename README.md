@@ -269,3 +269,7 @@ engineType === 'vosk'?
 - **语音识别异常** → onerror 捕获并显示错误信息，不中断应用运行
 - **模型文件不兼容** → resolveModelPath 严格验证 am 文件格式，拒绝不兼容模型以防 segfault
 
+
+视频路径：通过网盘分享的文件：屏幕录制 2026-05-23 163945.mp4
+链接: https://pan.baidu.com/s/1gL-dtY7FWQbH1EEk-Icp9w?pwd=1111 提取码: 1111 
+
