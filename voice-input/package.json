@@ -2,7 +2,7 @@
   "name": "voice-input",
   "version": "1.0.0",
   "description": "语音输入法 - 基于 Electron + Vosk 的高性能语音识别输入工具",
-  "main": "electron-dist/main.js",
+  "main": "electron-dist/electron/main.js",
   "scripts": {
     "dev:renderer": "vite",
     "dev:electron": "tsc -p tsconfig.electron.json && electron .",
