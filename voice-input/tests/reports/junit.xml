@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="103" failures="0" errors="0" time="2.243">
+  <testsuite name="正向流程 - 标点添加" errors="0" failures="0" skipped="0" timestamp="2026-05-23T00:48:54" time="0.783" tests="39">
+    <testcase classname="正向流程 - 标点添加" name="普通陈述句添加句号" time="0.011">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="疑问句添加问号 (语气词 吗)" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="疑问句添加问号 (疑问词 怎么)" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="疑问句添加问号 (疑问词 为什么)" time="0.001">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="疑问句添加问号 (谁)" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="感叹语气添加感叹号 (太)" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="感叹语气添加感叹号 (真)" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="感叹语气添加感叹号 (居然)" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="已以句号结尾时不重复添加" time="0.001">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="已以问号结尾时不重复添加" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="已以感叹号结尾时不重复添加" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 标点添加" name="已以省略号结尾时不重复添加" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;逗号&quot; → ，" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;句号&quot; → 。" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;问号&quot; → ？" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;感叹号&quot; → ！" time="0.001">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;冒号&quot; → ：" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;at符号&quot; → @" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="&quot;百分号&quot; → %" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 语音命令" name="多重语音命令组合" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="空字符串返回空" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="仅空白字符返回空白字符" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="纯数字添加句号" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="仅特殊字符" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="超长文本不崩溃" time="0.001">
+    </testcase>
+    <testcase classname="边界/异常输入" name="null 类似输入不崩溃" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="undefined 类似输入不崩溃" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="Unicode 字符保留" time="0">
+    </testcase>
+    <testcase classname="punctuate 基础方法" name="基础句号" time="0">
+    </testcase>
+    <testcase classname="punctuate 基础方法" name="已有点标点不覆盖" time="0">
+    </testcase>
+    <testcase classname="punctuateParagraph 段落方法" name="段落多句处理" time="0.001">
+    </testcase>
+    <testcase classname="punctuateParagraph 段落方法" name="段落以起始词分割" time="0">
+    </testcase>
+    <testcase classname="punctuateParagraph 段落方法" name="段落空字符串" time="0">
+    </testcase>
+    <testcase classname="formatNumbers 数字格式化" name="金额格式化 X块Y分" time="0">
+    </testcase>
+    <testcase classname="formatNumbers 数字格式化" name="温度格式化 X度" time="0">
+    </testcase>
+    <testcase classname="综合场景测试" name="日常对话场景" time="0.001">
+    </testcase>
+    <testcase classname="综合场景测试" name="办公场景 - 会议记录" time="0">
+    </testcase>
+    <testcase classname="综合场景测试" name="带语音命令的混合输入" time="0">
+    </testcase>
+    <testcase classname="综合场景测试" name="连续短句" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="标点 + 热词协同" errors="0" failures="0" skipped="0" timestamp="2026-05-23T00:48:55" time="0.931" tests="3">
+    <testcase classname="标点 + 热词协同" name="热词纠错在标点处理后保留标点" time="0.027">
+    </testcase>
+    <testcase classname="标点 + 热词协同" name="空数据流经过全部处理不崩溃" time="0.002">
+    </testcase>
+    <testcase classname="VAD + 标点时序模拟" name="模拟一段完整对话: 开始 → 说话 → 停止 → 加标点" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="正向流程 - 配置管理" errors="0" failures="0" skipped="0" timestamp="2026-05-23T00:48:55" time="0.95" tests="11">
+    <testcase classname="正向流程 - 配置管理" name="初始状态为 disabled" time="0.016">
+    </testcase>
+    <testcase classname="正向流程 - 配置管理" name="init 后状态正确" time="0">
+    </testcase>
+    <testcase classname="正向流程 - 配置管理" name="init 禁用状态" time="0.001">
+    </testcase>
+    <testcase classname="正向流程 - 配置管理" name="setEnabled 动态切换" time="0">
+    </testcase>
+    <testcase classname="请求限流控制" name="每日请求初始为 0" time="0">
+    </testcase>
+    <testcase classname="请求限流控制" name="correct 调用增加计数" time="0.049">
+    </testcase>
+    <testcase classname="请求限流控制" name="isEnabled 返回 false 时 correct 返回 null" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="空文本 correct 返回 null" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="仅空白 correct 返回 null" time="0.001">
+    </testcase>
+    <testcase classname="边界/异常输入" name="状态报告包含正确字段" time="0">
+    </testcase>
+    <testcase classname="事件通知" name="init 触发 status 事件" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="正向流程 - 状态转换" errors="0" failures="0" skipped="0" timestamp="2026-05-23T00:48:55" time="0.986" tests="18">
+    <testcase classname="正向流程 - 状态转换" name="初始状态为 idle" time="0.012">
+    </testcase>
+    <testcase classname="正向流程 - 状态转换" name="检测到语音 → idle → speaking" time="0.001">
+    </testcase>
+    <testcase classname="正向流程 - 状态转换" name="静音后超时 → speaking → pending_finalize" time="0.001">
+    </testcase>
+    <testcase classname="正向流程 - 状态转换" name="pending_finalize 后检测到语音回到 speaking" time="0.001">
+    </testcase>
+    <testcase classname="事件通知" name="stateChange 事件在切换时触发" time="0.001">
+    </testcase>
+    <testcase classname="事件通知" name="audioLevel 事件在每帧触发" time="0.001">
+    </testcase>
+    <testcase classname="事件通知" name="speechStart 事件在检测到语音时触发" time="0.001">
+    </testcase>
+    <testcase classname="事件通知" name="speechEnd 事件在静音超时时触发" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="空数组不改变状态" time="0.001">
+    </testcase>
+    <testcase classname="边界/异常输入" name="全零帧 (完美静音) 不触发语音" time="0.001">
+    </testcase>
+    <testcase classname="边界/异常输入" name="极低能量帧不触发语音 (阈值过滤)" time="0.003">
+    </testcase>
+    <testcase classname="边界/异常输入" name="未 start 时不处理" time="0">
+    </testcase>
+    <testcase classname="边界/异常输入" name="stop 后不处理音频" time="0">
+    </testcase>
+    <testcase classname="手动模式 (VAD mode=manual)" name="手动模式下静音不自动进入 pending_finalize" time="0.004">
+    </testcase>
+    <testcase classname="噪声基底与自适应阈值" name="前200帧建立噪声基底" time="0.037">
+    </testcase>
+    <testcase classname="噪声基底与自适应阈值" name="噪声适应后仍能检测真实语音" time="0.038">
+    </testcase>
+    <testcase classname="动态配置修改" name="setConfig 更新配置" time="0">
+    </testcase>
+    <testcase classname="动态配置修改" name="更新配置后生效" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="初始化 - 原生模块加载" errors="0" failures="0" skipped="0" timestamp="2026-05-23T00:48:55" time="1.005" tests="9">
+    <testcase classname="初始化 - 原生模块加载" name="init 在不安装 vosk 的情况下不崩溃" time="0.091">
+    </testcase>
+    <testcase classname="初始化 - 原生模块加载" name="init 后的状态报告可用" time="0.004">
+    </testcase>
+    <testcase classname="操作 - 引擎未就绪" name="start 在引擎未就绪时触发 error 事件" time="0.004">
+    </testcase>
+    <testcase classname="操作 - 引擎未就绪" name="stop 在引擎未就绪时返回空字符串" time="0.003">
+    </testcase>
+    <testcase classname="操作 - 引擎未就绪" name="feedAudio 在未 start 时不崩溃" time="0.002">
+    </testcase>
+    <testcase classname="操作 - 引擎未就绪" name="多次 destroy 不崩溃" time="0.002">
+    </testcase>
+    <testcase classname="操作 - 引擎未就绪" name="setHotwords 不影响未就绪状态" time="0.002">
+    </testcase>
+    <testcase classname="状态管理" name="初始未就绪时 isAvailable 返回 false" time="0.002">
+    </testcase>
+    <testcase classname="状态管理" name="getStatus 返回一致的状态" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="正向流程 - 增删改查" errors="0" failures="0" skipped="0" timestamp="2026-05-23T00:48:55" time="1.177" tests="23">
+    <testcase classname="正向流程 - 增删改查" name="添加热词返回带 ID 的对象" time="0.027">
+    </testcase>
+    <testcase classname="正向流程 - 增删改查" name="通过 ID 获取热词" time="0.003">
+    </testcase>
+    <testcase classname="正向流程 - 增删改查" name="通过词汇查找热词" time="0.011">
+    </testcase>
+    <testcase classname="正向流程 - 增删改查" name="删除热词成功返回 true" time="0.013">
+    </testcase>
+    <testcase classname="正向流程 - 增删改查" name="更新热词权重" time="0.015">
+    </testcase>
+    <testcase classname="正向流程 - 增删改查" name="更新热词纠错映射" time="0.015">
+    </testcase>
+    <testcase classname="正向流程 - 增删改查" name="获取全部热词按权重降序" time="0.028">
+    </testcase>
+    <testcase classname="正向流程 - 纠错应用" name="applyCorrections 替换纠错词汇" time="0.003">
+    </testcase>
+    <testcase classname="正向流程 - 纠错应用" name="无纠错映射时文本不变" time="0.012">
+    </testcase>
+    <testcase classname="正向流程 - 纠错应用" name="多个纠错同时应用" time="0.008">
+    </testcase>
+    <testcase classname="正向流程 - 纠错应用" name="getWordsForInjection 返回高权重词汇" time="0.011">
+    </testcase>
+    <testcase classname="正向流程 - 纠错应用" name="getCorrectionMap 返回正确映射" time="0.024">
+    </testcase>
+    <testcase classname="边界/异常输入" name="删除不存在的 ID 返回 false" time="0.002">
+    </testcase>
+    <testcase classname="边界/异常输入" name="获取不存在的 ID 返回 undefined" time="0.001">
+    </testcase>
+    <testcase classname="边界/异常输入" name="空热词列表 getAll 返回空数组" time="0.002">
+    </testcase>
+    <testcase classname="边界/异常输入" name="权重上限钳位到 10" time="0.002">
+    </testcase>
+    <testcase classname="边界/异常输入" name="权重下限钳位到 1" time="0.001">
+    </testcase>
+    <testcase classname="边界/异常输入" name="添加重复词汇时更新权重而非重复" time="0.013">
+    </testcase>
+    <testcase classname="边界/异常输入" name="更新不存在的 ID 返回 null" time="0.002">
+    </testcase>
+    <testcase classname="边界/异常输入" name="清空后列表为空" time="0.013">
+    </testcase>
+    <testcase classname="边界/异常输入" name="命中计数递增" time="0.026">
+    </testcase>
+    <testcase classname="边界/异常输入" name="getTopFrequent 按命中排序" time="0.049">
+    </testcase>
+    <testcase classname="持久化 - 文件读写" name="写入热词后重新读取能恢复" time="0.062">
+    </testcase>
+  </testsuite>
+</testsuites>

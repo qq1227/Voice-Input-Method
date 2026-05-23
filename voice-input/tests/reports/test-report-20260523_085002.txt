@@ -1,0 +1,9 @@
+Error: Can't find a root directory while resolving a config file path.
+Provided path to resolve: /mnt/c/Users/zhang/Desktop/七牛云/voice-input/tests/jest.config.ts
+cwd: C:\Users\zhang\Desktop\七牛云\voice-input
+    at resolveConfigPath (C:\Users\zhang\Desktop\七牛云\voice-input\node_modules\jest-config\build\resolveConfigPath.js:123:11)
+    at readInitialOptions (C:\Users\zhang\Desktop\七牛云\voice-input\node_modules\jest-config\build\index.js:386:55)
+    at readConfig (C:\Users\zhang\Desktop\七牛云\voice-input\node_modules\jest-config\build\index.js:147:54)
+    at readConfigs (C:\Users\zhang\Desktop\七牛云\voice-input\node_modules\jest-config\build\index.js:424:32)
+    at runCLI (C:\Users\zhang\Desktop\七牛云\voice-input\node_modules\@jest\core\build\cli\index.js:152:29)
+    at Object.run (C:\Users\zhang\Desktop\七牛云\voice-input\node_modules\jest-cli\build\run.js:130:62)

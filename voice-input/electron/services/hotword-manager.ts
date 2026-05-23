@@ -119,7 +119,7 @@ export class HotwordManager {
    */
   getWordsForInjection(): string[] {
     return Array.from(this.hotwords.values())
-      .filter((h) => h.weight >= 3)
+      .filter((h) => h.weight > 3)
       .map((h) => h.word);
   }
 
