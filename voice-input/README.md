@@ -117,6 +117,3 @@ Demo 视频路径：通过网盘分享的文件：屏幕录制 2026-05-23 163945
 链接: https://pan.baidu.com/s/1gL-dtY7FWQbH1EEk-Icp9w?pwd=1111 提取码: 1111 
 
 
-## License
-
-MIT
